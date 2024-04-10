@@ -6,19 +6,19 @@ class MultiDictionary:
     def __init__(self):
         self._english = d.Dictionary([], "english")
         self._italian = d.Dictionary([], "italian")
-        self._spanish = d.Dictionary([], "spanish")
+        #self._spanish = d.Dictionary([], "spanish")
 
         self._english.loadDictionary("resources/English.txt")
         self._italian.loadDictionary("resources/Italian.txt")
-        self._spanish.loadDictionary("resources/Spanish.txt")
+        #self._spanish.loadDictionary("resources/Spanish.txt")
 
     def printDic(self, language):
         if language == "english":
             self._english.printAll()
         elif language == "italian":
             self._italian.printAll()
-        elif language == "spanish":
-            self._spanish.printAll()
+        #elif language == "spanish":
+            #self._spanish.printAll()
         else:
             print("Language not supported")
 
@@ -36,9 +36,9 @@ class MultiDictionary:
             elif language == "italian":
                 if self._italian.dict.__contains__(word):
                     found = True
-            elif language == "spanish":
-                if self._spanish.dict.__contains__(word):
-                    found = True
+           # elif language == "spanish":
+                #if self._spanish.dict.__contains__(word):
+                    #found = True
             if (found):
                 richW.corretta = True
 
@@ -62,10 +62,10 @@ class MultiDictionary:
                 for entry in self._italian.dict:
                     if entry == word:
                         found = True
-            elif language == "spanish":
-                for entry in self._spanish.dict:
-                    if entry == word:
-                        found = True
+            #elif language == "spanish":
+                #for entry in self._spanish.dict:
+                    #if entry == word:
+                        #found = True
             if (found):
                 richW.corretta = True
 
@@ -87,9 +87,9 @@ class MultiDictionary:
             elif language == "italian":
                 currentDic = self._italian.dict
                 found = dichotomicSearch(word, currentDic)
-            elif language == "spanish":
-                currentDic = self._spanish.dict
-                found = dichotomicSearch(word, currentDic)
+            #elif language == "spanish":
+                #currentDic = self._spanish.dict
+                #found = dichotomicSearch(word, currentDic)
             if (found):
                 richW.corretta = True
 

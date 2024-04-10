@@ -28,7 +28,31 @@ class View(object):
 
         # Add your stuff here
 
-        self.page.add([])
+        #Row1
+        self._ddLingua = ft.Dropdown(label="Select language",
+                                     options=[
+                                         ft.dropdown.Option("italian"),
+                                         ft.dropdown.Option("english"),
+                                         ft.dropdown.Option("spanish"),
+                                     ],
+                                     )
+
+        #Row2
+        self._ddRicerca = ft.Dropdown(label="Search modality",
+                                      options=[
+                                          ft.dropdown.Option("Default"),
+                                          ft.dropdown.Option("Linear"),
+                                          ft.dropdown.Option("Dicotomica"),
+                                      ]
+                                      )
+        self._txtIn = ft.TextField(label="Add your sentence here")
+        self._btnCorrezione = ft.ElevatedButton(text="Spell Check", on_click=self.__controller.handleSpellCheck)
+        row2 = ft.Row([self._ddRicerca, self._txtIn, self._btnCorrezione])
+
+        #Row3
+        self._lvOut = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
+
+        self.page.add(self._ddLingua, row2, self._lvOut)
 
         self.page.update()
 

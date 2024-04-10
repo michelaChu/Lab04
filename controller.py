@@ -56,6 +56,32 @@ class SpellChecker:
               "4. Exit\n" +
               "______________________________\n")
 
+    def handleSpellCheck(self, e):
+        txtIn= self._view._txtIn.value
+        language= self._view._ddLingua.value
+        modality= self._view._ddRicerca.value
+
+        if txtIn=="":
+            self._view._lvOut.controls.append(ft.Text("Il campo non può essere vuoto", color="red"))
+            self._view.update()
+            return
+
+        if language== None:
+            self._view._lvOut.controls.append(ft.Text("Il campo non può essere vuoto", color="red"))
+            self._view.update()
+            return
+
+        if modality== None:
+            self._view._lvOut.controls.append(ft.Text("Il campo non può essere vuoto", color="red"))
+            self._view.update()
+            return
+
+        paroleErrate, tempo = self.handleSentence(txtIn, language, modality)
+
+        self._view._lvOut.controls.append(ft.Text("Frase inserita: "+txtIn))
+        self._view._lvOut.controls.append(ft.Text("Frase parole errate: " +paroleErrate))
+        self._view._lvOut.controls.append(ft.Text("Tempo richoesto dalla ricerca: " +str(tempo)))
+
 
 def replaceChars(text):
     chars = "\\`*_{}[]()>#+-.!$?%^;,=_~"
